@@ -32,6 +32,13 @@ app.use(cors({
 
 app.use(cookieParser())
 
+app.use((req, res) => {
+    if (req.method == "OPTIONS") {
+        res.status(200);
+        return res.send();
+    }
+})
+
 app.use('/auth', authRouter)
 
 app.use(isAuth);
