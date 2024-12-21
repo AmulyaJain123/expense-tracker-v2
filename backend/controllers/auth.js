@@ -225,6 +225,7 @@ const getDetails = async (req, res) => {
         console.log(token);
         if (token) {
             const payload = jwt.verify(token, process.env.JWT_SECRET);
+            console.log(payload);
             const doc = await getProfile(payload.email);
             if (!doc) {
                 throw "notfound";

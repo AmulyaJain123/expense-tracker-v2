@@ -45,6 +45,7 @@ async function addProfile(email, username, userId) {
 
 async function getProfile(email) {
     try {
+        console.log(email);
         const doc = await Profile.findOne({ email: email });
         if (!doc) {
             throw "notfound";
