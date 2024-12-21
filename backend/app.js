@@ -26,7 +26,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, 'public')))
 
 connectToDB();
-console.log("Connection Established")
+console.log("Connection Established HE HE HE HE HE")
 
 app.use(cors({
     origin: "https://expense-tracker-v2-aipi.vercel.app",
