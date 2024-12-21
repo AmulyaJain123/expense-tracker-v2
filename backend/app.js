@@ -32,10 +32,13 @@ app.use(cors({
 
 app.use(cookieParser())
 
-app.use((req, res) => {
+app.use((req, res, next) => {
+    console.log("Hello")
     if (req.method == "OPTIONS") {
         res.status(200);
         return res.send();
+    } else {
+        next();
     }
 })
 
@@ -59,7 +62,9 @@ const main = async () => {
     try {
         await connectToDB();
         console.log("Connection Established")
-        server.listen(process.env.PORT || 3000);
+        server.listen(process.env.PORT || 3000, () => {
+            console.log(`server listening on port ${process.env.PORT || 3000}`)
+        });
     }
     catch (error) {
         throw error;
