@@ -1,13 +1,16 @@
 const { v2: cloudinary } = require('cloudinary')
 
-cloudinary.config({
+const obj = {
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
     api_key: process.env.CLOUDINARY_API_KEY,
     api_secret: process.env.CLOUDINARY_API_SECRET
-})
+};
+
+cloudinary.config(obj)
 
 const t1UploadToCloudinary = async (imagePath, publicId, width, height, folder) => {
     try {
+        console.log(obj);
         const res = await cloudinary.uploader.upload(imagePath, { public_id: publicId, folder: folder });
         if (!res) {
             throw "failed";
