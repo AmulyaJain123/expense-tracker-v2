@@ -25,6 +25,9 @@ app.use(bodyParser.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, 'public')))
 
+connectToDB();
+console.log("Connection Established")
+
 app.use(cors({
     origin: "https://expense-tracker-v2-aipi.vercel.app",
     credentials: true
@@ -60,8 +63,7 @@ app.use('/friends', friendsRouter)
 
 const main = async () => {
     try {
-        await connectToDB();
-        console.log("Connection Established")
+
         server.listen(process.env.PORT || 3000, () => {
             console.log(`server listening on port ${process.env.PORT || 3000}`)
         });
